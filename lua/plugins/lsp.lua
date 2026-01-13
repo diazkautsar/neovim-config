@@ -59,7 +59,12 @@ return {
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
-        root_dir = lspconfig.util.root_pattern("package.json"),
+        root_dir = function(fname)
+          if lspconfig.util.root_pattern("deno.json", "deno.jsonc")(fname) then
+            return nil
+          end
+          return lspconfig.util.root_pattern("package.json", "tsconfig.json")(fname)
+        end,
         single_file_support = false,
         settings = {
           typescript = {
