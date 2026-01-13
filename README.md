@@ -5,6 +5,7 @@
 - Nerd Font (JetBrainsMono Nerd Font)
 - git
 - ripgrep
+- install tree-sitter
 
 ## Setup
 git clone -- ~/.config/nvim

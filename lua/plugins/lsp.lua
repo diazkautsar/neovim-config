@@ -61,6 +61,20 @@ return {
         on_attach = on_attach,
         root_dir = lspconfig.util.root_pattern("package.json"),
         single_file_support = false,
+        settings = {
+          typescript = {
+              preferences = {
+              importModuleSpecifierPreference = "relative",
+              quotePreference = "double",
+            },
+          },
+          javascript = {
+            preferences = {
+            importModuleSpecifierPreference = "relative",
+            quotePreference = "double",
+            },
+          },
+        }
       })
     end,
   },

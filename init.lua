@@ -26,8 +26,20 @@ vim.opt.clipboard = "unnamedplus"
 -- 5️⃣ Load plugins
 require("core.lazy")
 
+-- mapping auto import typescript
+vim.keymap.set("n", "<leader>oi", function()
+  vim.lsp.buf.code_action({
+    apply = true,
+    context = { only = { "source.organizeImports" } },
+  })
+end, { desc = "Organize Imports" })
+
+-- open diagnostic error
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+
 -- open tree
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
+
 -- exit all buffer except tree
 vim.keymap.set("n", "<leader>bo", function()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -39,6 +51,7 @@ vim.keymap.set("n", "<leader>bo", function()
     end
   end
 end, { desc = "Close all buffers except NvimTree" })
+
 -- auto create missing directories on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(event)
@@ -48,6 +61,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+
 -- refresh nvim tree after file is writen
 vim.api.nvim_create_autocmd("BufWritePost", {
   callback = function()
@@ -64,7 +78,6 @@ local arg = vim.fn.argv(0)
 if arg and vim.fn.isdirectory(arg) == 1 then
   vim.cmd("cd " .. arg)
 end
-
 
 -- 6️⃣ Open nvim-tree ONLY for directory start
 vim.api.nvim_create_autocmd("VimEnter", {
