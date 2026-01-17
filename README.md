@@ -7,6 +7,7 @@
 - ripgrep
 - install tree-sitter
 - install tailwind langauge server
+- install lazygit
 
 ## Setup
 git clone -- ~/.config/nvim
