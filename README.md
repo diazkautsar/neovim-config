@@ -10,3 +10,5 @@
 
 ## Setup
 git clone -- ~/.config/nvim
+
+- Dont forget set font in iTerm or Terminal to nerd font
