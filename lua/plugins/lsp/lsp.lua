@@ -23,6 +23,8 @@ return {
 
 		vim.lsp.config("denols", {
 			capabilities = capabilities,
+			root_markers = { "deno.json", "deno.jsonc" },
+			single_file_support = false,
 			settings = {
 				deno = {
 					enable = true,
@@ -35,6 +37,7 @@ return {
 
 		vim.lsp.config("ts_ls", {
 			capabilities = capabilities,
+			root_markers = { "package.json" },
 			single_file_support = false,
 			settings = {
 				typescript = {
