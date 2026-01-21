@@ -12,12 +12,26 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
+		capabilities.offsetEncoding = { "utf-16" }
+
 		vim.lsp.config("*", {
 			capabilities = capabilities,
 		})
 
 		vim.lsp.config("gopls", {
 			capabilities = capabilities,
+			cmd = { "gopls" },
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			root_markers = { "go.mod", "go.work", ".git" },
+			settings = {
+				gopls = {
+					analyses = {
+						unusedparams = true,
+					},
+					staticcheck = true,
+					semanticTokens = true,
+				},
+			},
 		})
 		vim.lsp.enable("gopls")
 
