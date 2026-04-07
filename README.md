@@ -1,6 +1,7 @@
 # NEOVIM CONFIG
 
 ## Requirements
+
 - Neovim >= 0.9
 - Nerd Font (JetBrainsMono Nerd Font)
 - git
@@ -10,6 +11,7 @@
 - install lazygit
 
 ## Setup
+
 git clone -- ~/.config/nvim
 
 - Dont forget set font in iTerm or Terminal to nerd font
