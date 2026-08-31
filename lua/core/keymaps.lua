@@ -19,3 +19,15 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+
+keymap.set("n", "<leader>yp", function()
+	local p = vim.fn.expand("%:p")
+	vim.fn.setreg("+", p)
+	print("Copied: " .. p)
+end, { desc = "Copy absolute path" })
+
+keymap.set("n", "<leader>yr", function()
+	local p = vim.fn.expand("%:.")
+	vim.fn.setreg("+", p)
+	print("Copied: " .. p)
+end, { desc = "Copy relative path" })
